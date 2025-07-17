@@ -74,7 +74,7 @@ SMODS.Joker{
     rarity = 1,
     unlocked = true,
     discovered = true,
-    eternal_compat   = true,
+    eternal_compat   = false,
     blueprint_compat = true,
     atlas = "JOAT",
     pos   = {x = 2, y = 0},
@@ -260,7 +260,7 @@ SMODS.Joker{
         if context.ending_shop then                           -- correct flag
             print("Shop ended")
     
-            local cash  = to_number(G.GAME.dollars)        -- plain number
+            local cash  = tonumber(G.GAME.dollars)        -- plain number
             local give  = (5 - (cash % 5)) % 5             -- top-up to next 5
     
             return {
@@ -310,7 +310,7 @@ SMODS.Joker{
     },
 
     loc_vars = function(self,info_queue,card)
-        local curr_rounds = to_number(card.ability.extra.rounds)
+        local curr_rounds = tonumber(card.ability.extra.rounds)
         local rnds_remaining = 2- curr_rounds
         return {vars = {card.ability.extra.xmult,card.ability.extra.xmult_inc,rnds_remaining}}
     end,
@@ -475,8 +475,7 @@ SMODS.Joker{
             [1] = "{C:green}#1# in #2# {}to give {C:attention} negative",
             [2] = "to a {C:attention}random joker {} when {C:attention} sold",
             [3] = "Chance increases by 1 every round end",
-            [4] = "{C:inactive}Unnaffected by \"Oops! All 6's\"",
-            [5] = "{C:inactive}Second Mouse gets the Cheese"
+            [4] = "{C:inactive}Second Mouse gets the Cheese"
         }
     },
 
